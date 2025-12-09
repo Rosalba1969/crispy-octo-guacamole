@@ -1,0 +1,21 @@
+{
+  "paypal": {
+    "mode": "sandbox",
+    "client_id": "YOUR_PAYPAL_CLIENT_ID",
+    "client_secret": "YOUR_PAYPAL_CLIENT_SECRET",
+    "sandbox": {
+      "api_url": "https://api-m.sandbox.paypal.com",
+      "web_url": "https://www.sandbox.paypal.com"
+    },
+    "production": {
+      "api_url": "https://api-m.paypal.com",
+      "web_url": "https://www.paypal.com"
+    },
+    "currency": "EUR",
+    "settings": {
+      "return_url": "https://your-domain.com/payment/success",
+      "cancel_url": "https://your-domain.com/payment/cancel",
+      "webhook_url": "https://your-domain.com/webhooks/paypal"
+    }
+  }
+}
