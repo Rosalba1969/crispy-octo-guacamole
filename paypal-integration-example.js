@@ -75,9 +75,10 @@ async function captureOrder(orderId) {
 }
 
 // 5. Effettuare un rimborso
-async function refundPayment(captureId, amount = null, currency = 'EUR') {
+async function refundPayment(captureId, amount, currency = 'EUR') {
   const request = new paypal.payments.CapturesRefundRequest(captureId);
   
+  // Rimborso parziale se amount è specificato, altrimenti rimborso completo
   if (amount) {
     request.requestBody({
       amount: {
@@ -139,8 +140,32 @@ app.post('/api/capture-paypal-order', async (req, res) => {
 app.post('/webhooks/paypal', async (req, res) => {
   const event = req.body;
   
-  // Verifica la firma del webhook (importante per la sicurezza)
-  // Vedi: https://developer.paypal.com/api/rest/webhooks/
+  // Verifica la firma del webhook per la sicurezza
+  // IMPORTANTE: Implementa sempre la verifica della firma in production
+  // Per informazioni sulla verifica: https://developer.paypal.com/api/rest/webhooks/
+  
+  /*
+  // Esempio di verifica della firma del webhook:
+  const webhookId = 'YOUR_WEBHOOK_ID'; // Ottieni dal Dashboard PayPal
+  const paypal = require('@paypal/checkout-server-sdk');
+  
+  const headers = req.headers;
+  const webhookEvent = {
+    auth_algo: headers['paypal-auth-algo'],
+    cert_url: headers['paypal-cert-url'],
+    transmission_id: headers['paypal-transmission-id'],
+    transmission_sig: headers['paypal-transmission-sig'],
+    transmission_time: headers['paypal-transmission-time'],
+    webhook_id: webhookId,
+    webhook_event: req.body
+  };
+  
+  // Verifica la firma
+  const isValid = await verifyWebhookSignature(webhookEvent);
+  if (!isValid) {
+    return res.sendStatus(401);
+  }
+  */
   
   switch(event.event_type) {
     case 'PAYMENT.CAPTURE.COMPLETED':

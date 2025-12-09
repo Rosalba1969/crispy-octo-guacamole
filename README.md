@@ -23,7 +23,7 @@ Questa guida ti aiuterà a configurare i pagamenti PayPal per la tua applicazion
 
 #### 2. Configurare le Credenziali
 
-Crea un file `.env` nella root del tuo progetto (vedi `paypal.config.example.json` per un esempio):
+Crea un file `.env` nella root del tuo progetto (vedi `.env.example` per un esempio):
 
 ```env
 PAYPAL_MODE=sandbox
