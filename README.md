@@ -50,9 +50,9 @@ Consulta il file `paypal-integration-example.js` per un esempio completo di come
 ### Funzionalità Supportate
 
 - ✅ Pagamenti one-time
-- ✅ Pagamenti ricorrenti (subscriptions)
 - ✅ Rimborsi
 - ✅ Webhook per notifiche
+- 📝 Pagamenti ricorrenti (subscriptions) - vedi documentazione PayPal
 
 ### Risorse Utili
 
